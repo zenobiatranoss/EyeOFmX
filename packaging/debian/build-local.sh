@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build a Debian .deb on the current Debian/Ubuntu/MX host without Docker.
+# Build a Debian .deb on the current Debian/Ubuntu host without Docker.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"

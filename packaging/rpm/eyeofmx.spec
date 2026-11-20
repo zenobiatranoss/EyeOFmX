@@ -24,8 +24,8 @@ posture report aggregating rootkit, malware, integrity and file checks.
 Optional scanning engines can be installed through an explicit, authenticated
 prompt using the correct packages for the detected distribution.
 
-It is not limited to Debian or MX Linux: it supports all major Linux
-distributions. The interface is native GTK 3 and every collector is read-only;
+It works across common Linux distributions. The interface is native GTK 3
+and every collector is read-only;
 installing tools is a separate confirmed action.
 
 %prep

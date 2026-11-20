@@ -41,7 +41,7 @@ fedora_dir="$DIST/fedora"
 opensuse_dir="$DIST/opensuse"
 [[ -d "$opensuse_dir" ]] || opensuse_dir="$DIST/rpm"
 
-add_entry debian   "Debian / Ubuntu / MX"        "amd64"   "$DIST/debian"   '*.deb'          'sudo apt install ./@FILE@'
+add_entry debian   "Debian / Ubuntu"             "amd64"   "$DIST/debian"   '*.deb'          'sudo apt install ./@FILE@'
 add_entry fedora   "Fedora / RHEL / Rocky / Alma" "x86_64" "$fedora_dir"    '*.rpm'          'sudo dnf install ./@FILE@'
 add_entry opensuse "openSUSE"                    "x86_64" "$opensuse_dir"  '*.rpm'          'sudo zypper install ./@FILE@'
 add_entry arch     "Arch / Manjaro"              "x86_64" "$DIST/arch"     '*.pkg.tar.zst'  'sudo pacman -U ./@FILE@'

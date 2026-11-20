@@ -279,8 +279,7 @@ func (a *App) showAbout() {
 	d.SetProgramName("EyeOFmX")
 	d.SetVersion("1.0.0")
 	d.SetComments("Created by Zenobia\nFor NT Protection\n\n" +
-		"Native GTK 3 monitoring and security inspection for all Linux distributions — " +
-		"not only Debian or MX Linux.\n" +
+		"Native GTK 3 monitoring and security inspection for Linux desktops.\n" +
 		"Includes a comprehensive posture scan aggregating rkhunter, chkrootkit, lynis, " +
 		"aide, ClamAV, osquery and native checks into one brief report.\n" +
 		"Collectors are read-only. Installing optional engines is a separate, " +

@@ -1,7 +1,7 @@
 # EyeOFmX prebuilt packages
 
-Created by **Zenobia**. **For NT Protection**. These packages are for all Linux
-distributions, not only Debian or MX Linux.
+Created by **Zenobia**. **For NT Protection**. These packages are made for
+common Linux distributions.
 
 This directory turns the Go source into **single-file installers** for the
 major Linux families. An end user downloads one file for their distribution and
