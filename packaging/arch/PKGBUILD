@@ -1,0 +1,19 @@
+pkgname=eyeofmx
+pkgver=@VERSION@
+pkgrel=1
+pkgdesc="Native GTK 3 inspector for all Linux with comprehensive posture scan - For NT Protection"
+url="https://github.com/zenobiatranoss/EyeOFmX"
+arch=('@ARCH_ARCH@')
+license=('MIT')
+packager='Zenobia'
+depends=('gtk3')
+source=("eyeofmx" "io.github.eyeofmx.desktop" "LICENSE")
+sha256sums=('SKIP' 'SKIP' 'SKIP')
+
+package() {
+  install -Dm755 "$srcdir/eyeofmx" "$pkgdir/usr/bin/eyeofmx"
+  install -Dm644 "$srcdir/io.github.eyeofmx.desktop" \
+    "$pkgdir/usr/share/applications/io.github.eyeofmx.desktop"
+  install -Dm644 "$srcdir/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

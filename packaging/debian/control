@@ -1,0 +1,20 @@
+Package: eyeofmx
+Version: @VERSION@
+Section: utils
+Priority: optional
+Architecture: @ARCH@
+Depends: libc6, libglib2.0-0, libgtk-3-0
+Maintainer: Zenobia <zenobia@users.noreply.github.com>
+Description: Native GTK 3 monitoring and security inspector for all Linux
+ Created by Zenobia. For NT Protection.
+ .
+ EyeOFmX shows active sockets, listening ports, owning processes, critical
+ /etc files, live activity, shell command history, structured findings
+ from installed security tools and a brief comprehensive posture report
+ aggregating rootkit, malware, integrity and suspicious-file checks.
+ Optional scanning engines can be installed through an explicit, authenticated
+ prompt using the correct packages for the detected distribution.
+ .
+ It is not limited to Debian or MX Linux: it supports all major Linux
+ distributions. The interface is native GTK 3 and every collector is read-only;
+ installing tools is a separate confirmed action.

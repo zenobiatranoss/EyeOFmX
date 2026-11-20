@@ -1,0 +1,183 @@
+:root {
+  --paper: #f4f1e8;
+  --paper-2: #ebe6d8;
+  --ink: #141414;
+  --ink-soft: #3d403f;
+  --blue: #175779;
+  --blue-dark: #0e3c55;
+  --line: #141414;
+  --term: #0f1418;
+  --term-ink: #e8eef2;
+  --term-dim: #93a3ad;
+  --mono: "DejaVu Sans Mono", "Liberation Mono", Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+code {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  padding: 1px 5px;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+}
+
+.section.compact { margin-top: 0; }
+
+.muted { color: var(--ink-soft); }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+}
+
+h2 { margin: 0; font-size: 24px; letter-spacing: -0.02em; }
+.section-head p { margin: 0; font-size: 13px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 16px;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 90ms ease, box-shadow 90ms ease, background 90ms ease;
+}
+
+.card:hover {
+  background: var(--paper-2);
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.card:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+
+.card-top { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+.card h3 { margin: 0; font-size: 16px; }
+.arch { font-size: 11px; border: 1px solid var(--line); padding: 2px 6px; white-space: nowrap; }
+.file { margin: 12px 0 8px; font-size: 13px; word-break: break-all; }
+.meta { font-size: 12px; color: var(--ink-soft); margin-bottom: 12px; }
+
+.hash {
+  font-size: 11px;
+  word-break: break-all;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  padding: 6px;
+  margin-bottom: 12px;
+}
+
+.hash span { color: var(--blue); }
+
+.cmd {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  background: var(--term);
+  color: var(--term-ink);
+}
+
+.cmd code {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  color: var(--term-ink);
+  padding: 8px;
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.copy {
+  border: 0;
+  border-left: 1px solid #33414a;
+  background: #1b242a;
+  color: var(--term-ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.copy:hover { background: var(--blue); }
+.copy:active { background: var(--blue-dark); }
+
+.dl {
+  display: inline-block;
+  margin-top: 12px;
+  width: 100%;
+  text-align: center;
+  border: 2px solid var(--line);
+  background: var(--blue);
+  color: #ffffff;
+  padding: 9px 16px;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform 90ms ease, box-shadow 90ms ease, background 90ms ease;
+}
+
+.dl:hover { background: var(--blue-dark); }
+.dl:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--ink); }
+
+.terminal-section { margin-top: 40px; border: 2px solid var(--line); }
+
+.terminal-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  background: #1b242a;
+  border-bottom: 1px solid #33414a;
+}
+
+.dot { width: 10px; height: 10px; display: inline-block; border: 1px solid #000; }
+.dot.red { background: #a83232; }
+.dot.yellow { background: #c9a227; }
+.dot.green { background: #2e7d42; }
+.terminal-title { margin-left: 8px; color: var(--term-dim); font-size: 12px; }
+
+.terminal {
+  margin: 0;
+  padding: 16px;
+  background: var(--term);
+  color: var(--term-ink);
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+footer {
+  border-top: 2px solid var(--line);
+  background: var(--paper-2);
+  padding: 18px 24px;
+  font-size: 12px;
+}
+
+@media (max-width: 640px) {
+  main { padding: 28px 16px 48px; }
+  .section-head { flex-direction: column; }
+  .card { box-shadow: 3px 3px 0 var(--ink); }
+}

@@ -1,0 +1,8 @@
+.git/
+dist/
+eyeofmx
+*.deb
+*.rpm
+*.apk
+*.pkg.tar.zst
+*.tar.gz

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=EyeOFmX
+GenericName=Linux Monitoring and Security Inspector
+Comment=Native GTK inspector for all Linux distributions - For NT Protection
+Exec=eyeofmx
+TryExec=eyeofmx
+Icon=utilities-system-monitor
+Terminal=false
+Categories=System;Monitor;Security;
+Keywords=monitor;security;network;process;audit;
+StartupNotify=true

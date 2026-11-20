@@ -1,0 +1,12 @@
+/eyeofmx
+/dist/
+*.deb
+*.rpm
+*.apk
+*.pkg.tar.zst
+*.tar.gz
+
+# The generated download site must keep its prebuilt files so GitHub Pages can
+# serve them directly.
+!site/downloads/
+!site/downloads/*
