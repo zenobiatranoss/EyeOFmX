@@ -1,11 +1,8 @@
 # EyeOFmX
-
+I made this project some time ago, and I am publishing it now with
+updates, fixes, and ready-made installers.
 EyeOFmX is a native Linux desktop app for looking at system activity and security
-posture. I made this project some time ago, and I am publishing it now with
-updates, fixes, and ready-made installers. It was created by Zenobia for NT
-Protection.
-
-It is a normal GTK 3 window, not a browser app. It shows active sockets, the
+posture. It is a normal GTK 3 window, not a browser app. It shows active sockets, the
 processes that own them, important `/etc` files, live changes, shell command
 history, security logs, and a short posture report. The report collects rootkit,
 malware, file-integrity, hardening, and native checks in one place so you get a
