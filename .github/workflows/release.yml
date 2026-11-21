@@ -142,7 +142,6 @@ jobs:
           files: |
             dist/debian/**/*.deb
             dist/fedora/**/*.rpm
-            dist/opensuse/**/*.rpm
             dist/arch/**/*.pkg.tar.zst
             dist/alpine/**/*.apk
             dist/generic/**/*.tar.gz
