@@ -1,6 +1,7 @@
 # EyeOFmX
 I made this project some time ago, and I am publishing it now with
 updates, fixes, and ready-made installers.
+![](og-image.jpg)
 EyeOFmX is a native Linux desktop app for looking at system activity and security
 posture. It is a normal GTK 3 window, not a browser app. It shows active sockets, the
 processes that own them, important `/etc` files, live changes, shell command
