@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to build (for example 1.0.1)'
+        required: true
+        default: '1.0.1'
 
 permissions:
   contents: write
@@ -26,16 +32,58 @@ jobs:
       - name: Install native GTK 3 build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev pkg-config build-essential
+          sudo apt-get install -y libgtk-3-dev pkg-config build-essential rpm
 
       - name: Set version from tag
         id: version
-        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "version=${{ github.event.inputs.version }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+          fi
 
-      - name: Build all single-file packages
+      - name: Build native GTK 3 binary
+        run: |
+          CGO_CFLAGS="-Wno-deprecated-declarations" \
+            go build -tags gtk_3_20 -trimpath -ldflags="-s -w" \
+            -o eyeofmx ./cmd/eyeofmx
+
+      - name: Build Debian, RPM and generic packages
         env:
           VERSION: ${{ steps.version.outputs.version }}
-        run: ./packaging/build.sh
+        run: |
+          mkdir -p dist/fedora dist/opensuse
+          VERSION="$VERSION" ./packaging/debian/build-local.sh
+          OUT="$GITHUB_WORKSPACE/dist/fedora" VERSION="$VERSION" ./packaging/rpm/build-local.sh
+          OUT="$GITHUB_WORKSPACE/dist/opensuse" VERSION="$VERSION" ./packaging/rpm/build-local.sh
+          VERSION="$VERSION" ./packaging/generic/build.sh
+
+      - name: Build Arch package (Docker)
+        continue-on-error: true
+        timeout-minutes: 20
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          mkdir -p dist/arch
+          DOCKER_BUILDKIT=1 docker build \
+            --build-arg "VERSION=$VERSION" \
+            --build-arg "ARCH_ARCH=$(uname -m)" \
+            --file packaging/arch/Dockerfile \
+            --output "type=local,dest=dist/arch" .
+
+      - name: Build Alpine package (Docker)
+        continue-on-error: true
+        timeout-minutes: 20
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          mkdir -p dist/alpine
+          DOCKER_BUILDKIT=1 docker build \
+            --build-arg "VERSION=$VERSION" \
+            --build-arg "APK_ARCH=$(uname -m)" \
+            --file packaging/alpine/Dockerfile \
+            --output "type=local,dest=dist/alpine" .
 
       - name: Generate static download site
         env:
