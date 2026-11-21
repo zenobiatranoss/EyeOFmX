@@ -104,14 +104,6 @@ main {
   padding: 24px 0;
 }
 
-.eyebrow {
-  margin: 0 0 10px;
-  color: var(--blue);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .hero h1 {
   margin: 0 0 14px;
   font-size: 34px;
@@ -119,7 +111,22 @@ main {
   letter-spacing: -0.03em;
 }
 
-.hero-text { margin: 0; color: var(--ink-soft); max-width: 44ch; }
+.hero-text { margin: 0 0 20px; color: var(--ink-soft); max-width: 44ch; }
+
+.hero-download {
+  display: inline-block;
+  background: var(--blue);
+  color: #ffffff;
+  border: 2px solid var(--line);
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 9px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.hero-download:hover { background: var(--blue-dark); }
+.hero-download:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--ink); }
 
 .showcase {
   position: relative;
@@ -157,7 +164,7 @@ main {
 .shot-left {
   width: 58%;
   left: 0;
-  bottom: 0;
+  bottom: 18%;
   z-index: 2;
   transform: rotateY(9deg) rotateZ(3deg) translateZ(-10px);
 }
@@ -165,7 +172,7 @@ main {
 .shot-right {
   width: 58%;
   right: 0;
-  bottom: 4%;
+  bottom: 14%;
   z-index: 1;
   transform: rotateY(-9deg) rotateZ(-4deg) translateZ(-30px);
 }
