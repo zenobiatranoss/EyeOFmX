@@ -85,6 +85,14 @@ jobs:
             --file packaging/alpine/Dockerfile \
             --output "type=local,dest=dist/alpine" .
 
+      - name: Generate checksums for the published files
+        run: |
+          cd dist
+          find . -type f \( -name '*.deb' -o -name '*.rpm' -o \
+            -name '*.pkg.tar.zst' -o -name '*.apk' -o -name '*.tar.gz' \) \
+            -printf '%P\n' | sort | xargs -r sha256sum > SHA256SUMS
+          cat SHA256SUMS
+
       - name: Generate static download site
         env:
           VERSION: ${{ steps.version.outputs.version }}
@@ -121,9 +129,14 @@ jobs:
           tag_name: v${{ needs.build.outputs.version }}
           name: EyeOFmX ${{ needs.build.outputs.version }}
           generate_release_notes: true
+          overwrite_files: true
           body: |
             Created by Zenobia — For NT Protection.
-            Single-file installers for all Linux distributions. No source or build required.
+
+            The EyeOFmX icon is bundled into the binary for the window and About
+            dialog, and installed into the hicolor icon theme by every package.
+            Single-file installers for all Linux distributions. No source or build
+            required. Verify the files with SHA256SUMS.
           files: |
             dist/debian/**/*.deb
             dist/fedora/**/*.rpm
@@ -131,6 +144,7 @@ jobs:
             dist/arch/**/*.pkg.tar.zst
             dist/alpine/**/*.apk
             dist/generic/**/*.tar.gz
+            dist/SHA256SUMS
 
   deploy-pages:
     needs: build

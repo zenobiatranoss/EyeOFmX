@@ -33,7 +33,7 @@ check-deps:
 	@echo "GTK 3 development files found."
 
 build: check-deps
-	CGO_CFLAGS="$(CGOFLAGS)" $(GO) build -tags $(TAGS) -o $(BIN) ./cmd/eyeofmx
+	CGO_CFLAGS="$(CGOFLAGS)" $(GO) build -tags $(TAGS) -trimpath -ldflags="-s -w" -o $(BIN) ./cmd/eyeofmx
 
 test:
 	CGO_CFLAGS="$(CGOFLAGS)" $(GO) test -tags $(TAGS) ./...
