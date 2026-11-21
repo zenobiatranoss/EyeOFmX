@@ -9,17 +9,23 @@ packager="Zenobia"
 depends="gtk3"
 source="eyeofmx
 	io.github.eyeofmx.desktop
-	LICENSE"
+	LICENSE
+	icons"
 options="!check"
 
 package() {
 	install -Dm755 "$srcdir/eyeofmx" "$pkgdir/usr/bin/eyeofmx"
 	install -Dm644 "$srcdir/io.github.eyeofmx.desktop" \
 		"$pkgdir/usr/share/applications/io.github.eyeofmx.desktop"
+	for size in 16 32 48 64 128 256; do
+		install -Dm644 "$srcdir/icons/${size}x${size}/apps/eyeofmx.png" \
+			"$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/eyeofmx.png"
+	done
 	install -Dm644 "$srcdir/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 sha256sums="SKIP
+SKIP
 SKIP
 SKIP"

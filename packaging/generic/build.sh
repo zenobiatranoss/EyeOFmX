@@ -20,6 +20,7 @@ mkdir -p "$dir" "$OUT"
 install -m 0755 "$BIN" "$dir/eyeofmx"
 install -m 0644 "$ROOT/io.github.eyeofmx.desktop" \
   "$dir/io.github.eyeofmx.desktop"
+cp -a "$ROOT/assets/icons" "$dir/icons"
 install -m 0644 "$ROOT/LICENSE" "$dir/LICENSE"
 install -m 0644 "$ROOT/README.md" "$dir/README.md"
 cat > "$dir/INSTALL.txt" <<EOF
@@ -33,6 +34,10 @@ Install system-wide:
   sudo install -m 0755 eyeofmx /usr/local/bin/eyeofmx
   sudo install -m 0644 io.github.eyeofmx.desktop \\
     /usr/share/applications/io.github.eyeofmx.desktop
+  for size in 16 32 48 64 128 256; do \\
+    sudo install -Dm644 icons/\${size}x\${size}/apps/eyeofmx.png \\
+      /usr/share/icons/hicolor/\${size}x\${size}/apps/eyeofmx.png; \\
+  done
 
 Run:
   eyeofmx

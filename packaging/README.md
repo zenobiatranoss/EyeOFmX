@@ -28,13 +28,13 @@ that provides GTK 3.
 Requires Docker with BuildKit enabled:
 
 ```bash
-VERSION=1.0.0 ./packaging/build.sh
+VERSION=1.0.1 ./packaging/build.sh
 ```
 
 Artifacts are written to `dist/<target>/`. To build only some targets:
 
 ```bash
-TARGETS="debian fedora" VERSION=1.0.0 ./packaging/build.sh
+TARGETS="debian fedora" VERSION=1.0.1 ./packaging/build.sh
 ```
 
 Cross-architecture builds (`aarch64`/`arm64`) require an emulator such as
@@ -55,7 +55,7 @@ tools inside the provided Dockerfiles.
 
 ## Automated releases and download site
 
-`.github/workflows/release.yml` builds all targets when a tag like `v1.0.0` is
+`.github/workflows/release.yml` builds all targets when a tag like `v1.0.1` is
 pushed, attaches the files to the GitHub Release, generates `site/` and deploys
 it to GitHub Pages. Users then only download the file that matches their
 distribution from one simple page. See `site/index.html` and `site/generate.sh`.

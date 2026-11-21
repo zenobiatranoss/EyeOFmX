@@ -27,18 +27,18 @@ Pick the file for Debian/Ubuntu, Fedora/RHEL, openSUSE, Arch, Alpine, or the
 generic Linux tarball. Install it with the usual command for your distribution:
 
 ```
-sudo apt install ./eyeofmx_1.0.0_amd64.deb
-sudo dnf install ./eyeofmx-1.0.0-1.x86_64.rpm
-sudo zypper install ./eyeofmx-1.0.0-1.x86_64.rpm
-sudo pacman -U ./eyeofmx-1.0.0-1-x86_64.pkg.tar.zst
-sudo apk add --allow-untrusted ./eyeofmx-1.0.0-r0-x86_64.apk
+sudo apt install ./eyeofmx_1.0.1_amd64.deb
+sudo dnf install ./eyeofmx-1.0.1-1.x86_64.rpm
+sudo zypper install ./eyeofmx-1.0.1-1.x86_64.rpm
+sudo pacman -U ./eyeofmx-1.0.1-1-x86_64.pkg.tar.zst
+sudo apk add --allow-untrusted ./eyeofmx-1.0.1-r0-x86_64.apk
 ```
 
 For the generic tarball, extract it and copy the binary:
 
 ```
-tar -xzf eyeofmx-1.0.0-x86_64.tar.gz
-cd eyeofmx-1.0.0-x86_64
+tar -xzf eyeofmx-1.0.1-x86_64.tar.gz
+cd eyeofmx-1.0.1-x86_64
 sudo install -m755 eyeofmx /usr/local/bin/
 ```
 

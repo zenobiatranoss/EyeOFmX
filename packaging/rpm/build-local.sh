@@ -3,7 +3,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-VERSION="${VERSION:-1.0.0}"
+VERSION="${VERSION:-1.0.1}"
 RPM_ARCH="${RPM_ARCH:-$(uname -m)}"
 OUT="${OUT:-$ROOT/dist/rpm}"
 BIN="$ROOT/eyeofmx"
@@ -21,6 +21,7 @@ mkdir -p "$OUT"
 install -m 0755 "$BIN" "$tmp/SOURCES/eyeofmx"
 install -m 0644 "$ROOT/io.github.eyeofmx.desktop" \
   "$tmp/SOURCES/io.github.eyeofmx.desktop"
+cp -a "$ROOT/assets/icons" "$tmp/SOURCES/icons"
 install -m 0644 "$ROOT/LICENSE" "$tmp/SOURCES/LICENSE"
 sed -e "s|@VERSION@|$VERSION|g" -e "s|@RPM_ARCH@|$RPM_ARCH|g" \
   "$ROOT/packaging/rpm/eyeofmx.spec" > "$tmp/SPECS/eyeofmx.spec"

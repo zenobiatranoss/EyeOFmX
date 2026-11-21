@@ -13,7 +13,7 @@ import (
 	"eyeofmx/internal/sysutil"
 )
 
-const version = "1.0.0"
+const version = "1.0.1"
 
 func main() {
 	showVersion := flag.Bool("version", false, "print version and exit")

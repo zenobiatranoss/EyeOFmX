@@ -1,5 +1,5 @@
 FROM archlinux:base-devel AS packager
-ARG VERSION=1.0.0
+ARG VERSION=1.0.1
 ARG ARCH_ARCH=x86_64
 
 RUN pacman -Syu --noconfirm go gtk3 pkgconf \
@@ -16,6 +16,7 @@ RUN CGO_CFLAGS="-Wno-deprecated-declarations" \
 RUN useradd -m -G wheel builder
 COPY packaging/arch/PKGBUILD /pkg/PKGBUILD
 COPY io.github.eyeofmx.desktop /pkg/io.github.eyeofmx.desktop
+COPY assets/icons /pkg/icons
 COPY LICENSE /pkg/LICENSE
 RUN sed -e "s|@VERSION@|${VERSION}|g" -e "s|@ARCH_ARCH@|${ARCH_ARCH}|g" \
         /pkg/PKGBUILD > /tmp/PKGBUILD && mv /tmp/PKGBUILD /pkg/PKGBUILD

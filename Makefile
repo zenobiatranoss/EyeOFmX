@@ -9,7 +9,7 @@ GO       ?= go
 TAGS     ?= gtk_3_20
 CGOFLAGS ?= -Wno-deprecated-declarations
 BIN      ?= eyeofmx
-VERSION  ?= 1.0.0
+VERSION  ?= 1.0.1
 PKG_CONFIG ?= pkg-config
 
 GTK_PACKAGES = gtk+-3.0 gdk-3.0 glib-2.0 gobject-2.0

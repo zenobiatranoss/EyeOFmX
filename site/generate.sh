@@ -6,7 +6,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SITE="$ROOT/site"
 DIST="$ROOT/dist"
 DOWNLOADS="$SITE/downloads"
-VERSION="${VERSION:-1.0.0}"
+VERSION="${VERSION:-1.0.1}"
 
 mkdir -p "$DOWNLOADS"
 find "$DOWNLOADS" -mindepth 1 -maxdepth 1 -type f -delete
@@ -68,5 +68,6 @@ $json_list
 EOF
 
 cp -f "$ROOT/LICENSE" "$SITE/LICENSE.txt"
+cp -f "$ROOT/assets/icons/64x64/apps/eyeofmx.png" "$SITE/favicon.png"
 touch "$SITE/.nojekyll"
 echo "Site data written to $SITE/data.js (${#entries[@]} download entries)"

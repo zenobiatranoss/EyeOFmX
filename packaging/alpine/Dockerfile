@@ -1,5 +1,5 @@
 FROM alpine:3.20 AS packager
-ARG VERSION=1.0.0
+ARG VERSION=1.0.1
 ARG APK_ARCH=x86_64
 
 ENV PACKAGER="Zenobia <zenobia@users.noreply.github.com>"
@@ -20,6 +20,7 @@ RUN CGO_CFLAGS="-Wno-deprecated-declarations" \
 
 COPY packaging/alpine/APKBUILD /pkg/APKBUILD
 COPY io.github.eyeofmx.desktop /pkg/io.github.eyeofmx.desktop
+COPY assets/icons /pkg/icons
 COPY LICENSE /pkg/LICENSE
 RUN sed -e "s|@VERSION@|${VERSION}|g" -e "s|@APK_ARCH@|${APK_ARCH}|g" \
         /pkg/APKBUILD > /tmp/APKBUILD && mv /tmp/APKBUILD /pkg/APKBUILD

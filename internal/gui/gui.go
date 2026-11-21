@@ -68,6 +68,7 @@ func (a *App) build() error {
 	}
 	a.window = win
 	win.SetTitle("EyeOFmX — Linux Monitoring & Security Inspector")
+	setWindowIcon(win)
 	win.SetDefaultSize(1440, 900)
 	win.SetPosition(gtk.WIN_POS_CENTER)
 	win.Connect("destroy", func() { gtk.MainQuit() })
@@ -277,7 +278,10 @@ func (a *App) showAbout() {
 	}
 	d.SetTransientFor(a.window)
 	d.SetProgramName("EyeOFmX")
-	d.SetVersion("1.0.0")
+	if logo := iconPixbuf(); logo != nil {
+		d.SetLogo(logo)
+	}
+	d.SetVersion("1.0.1")
 	d.SetComments("Created by Zenobia\nFor NT Protection\n\n" +
 		"Native GTK 3 monitoring and security inspection for Linux desktops.\n" +
 		"Includes a comprehensive posture scan aggregating rkhunter, chkrootkit, lynis, " +

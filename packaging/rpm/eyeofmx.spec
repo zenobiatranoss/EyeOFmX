@@ -39,13 +39,28 @@ mkdir -p %{buildroot}%{_datadir}/licenses/%{name}
 install -m 0755 %{_sourcedir}/eyeofmx %{buildroot}%{_bindir}/eyeofmx
 install -m 0644 %{_sourcedir}/io.github.eyeofmx.desktop \
     %{buildroot}%{_datadir}/applications/io.github.eyeofmx.desktop
+for size in 16 32 48 64 128 256; do
+    install -Dm644 %{_sourcedir}/icons/${size}x${size}/apps/eyeofmx.png \
+        %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/eyeofmx.png
+done
 install -m 0644 %{_sourcedir}/LICENSE \
     %{buildroot}%{_datadir}/licenses/%{name}/LICENSE
 
 %files
 %{_bindir}/eyeofmx
 %{_datadir}/applications/io.github.eyeofmx.desktop
+%{_datadir}/icons/hicolor/*/apps/eyeofmx.png
 %{_datadir}/licenses/%{name}/LICENSE
+
+%post
+if [ -x /usr/bin/gtk-update-icon-cache ]; then
+    /usr/bin/gtk-update-icon-cache -q -t -f %{_datadir}/icons/hicolor >/dev/null 2>&1 || :
+fi
+
+%postun
+if [ -x /usr/bin/gtk-update-icon-cache ]; then
+    /usr/bin/gtk-update-icon-cache -q -t -f %{_datadir}/icons/hicolor >/dev/null 2>&1 || :
+fi
 
 %changelog
 * Sat Nov 21 2026 Zenobia <zenobia@users.noreply.github.com> - @VERSION@-1

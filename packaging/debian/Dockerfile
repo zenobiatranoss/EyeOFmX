@@ -14,7 +14,7 @@ RUN CGO_CFLAGS="-Wno-deprecated-declarations" \
     -o /out/eyeofmx ./cmd/eyeofmx
 
 FROM debian:bookworm-slim AS packager
-ARG VERSION=1.0.0
+ARG VERSION=1.0.1
 ARG DEB_ARCH=amd64
 
 RUN apt-get update && apt-get install -y --no-install-recommends dpkg-dev \
@@ -24,6 +24,7 @@ RUN mkdir -p /pkg/DEBIAN /pkg/usr/bin /pkg/usr/share/applications \
         /pkg/usr/share/licenses/eyeofmx /pkg/usr/share/doc/eyeofmx /out
 COPY --from=builder /out/eyeofmx /pkg/usr/bin/eyeofmx
 COPY io.github.eyeofmx.desktop /pkg/usr/share/applications/io.github.eyeofmx.desktop
+COPY assets/icons /pkg/usr/share/icons/hicolor/
 COPY LICENSE /pkg/usr/share/licenses/eyeofmx/LICENSE
 COPY packaging/debian/control /tmp/control
 RUN sed -e "s|@VERSION@|${VERSION}|g" -e "s|@ARCH@|${DEB_ARCH}|g" \

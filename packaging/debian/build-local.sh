@@ -3,7 +3,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-VERSION="${VERSION:-1.0.0}"
+VERSION="${VERSION:-1.0.1}"
 DEB_ARCH="${DEB_ARCH:-$(dpkg --print-architecture)}"
 OUT="${OUT:-$ROOT/dist/debian}"
 BIN="$ROOT/eyeofmx"
@@ -25,6 +25,10 @@ mkdir -p "$OUT"
 install -m 0755 "$BIN" "$tmp/usr/bin/eyeofmx"
 install -m 0644 "$ROOT/io.github.eyeofmx.desktop" \
   "$tmp/usr/share/applications/io.github.eyeofmx.desktop"
+for size in 16 32 48 64 128 256; do
+  install -Dm644 "$ROOT/assets/icons/${size}x${size}/apps/eyeofmx.png" \
+    "$tmp/usr/share/icons/hicolor/${size}x${size}/apps/eyeofmx.png"
+done
 install -m 0644 "$ROOT/LICENSE" "$tmp/usr/share/licenses/eyeofmx/LICENSE"
 sed -e "s|@VERSION@|$VERSION|g" -e "s|@ARCH@|$DEB_ARCH|g" \
   "$ROOT/packaging/debian/control" > "$tmp/DEBIAN/control"
