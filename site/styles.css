@@ -97,7 +97,7 @@ main {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
   gap: 40px;
   align-items: center;
   min-height: calc(100vh - 130px);
@@ -129,52 +129,30 @@ main {
 .hero-download:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--ink); }
 
 .showcase {
-  position: relative;
-  height: min(68vh, 620px);
-  perspective: 1400px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .shot {
-  position: absolute;
   margin: 0;
   border: 1px solid var(--line);
   background: var(--paper);
-  box-shadow: 12px 12px 0 rgba(20, 20, 20, 0.18);
+  box-shadow: 8px 8px 0 rgba(20, 20, 20, 0.18);
   overflow: hidden;
-  transform-style: preserve-3d;
 }
 
 .shot img {
   display: block;
   width: 100%;
   height: auto;
-  -webkit-mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 66%, transparent 100%);
-  mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 66%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 94%, transparent 100%);
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 94%, transparent 100%);
 }
 
 .shot-main {
-  width: 88%;
-  top: 1%;
-  left: 6%;
-  z-index: 3;
-  transform: rotateY(-5deg) rotateZ(-1deg) translateZ(30px);
-  box-shadow: 16px 16px 0 rgba(20, 20, 20, 0.2);
-}
-
-.shot-left {
-  width: 58%;
-  left: 0;
-  bottom: 18%;
-  z-index: 2;
-  transform: rotateY(9deg) rotateZ(3deg) translateZ(-10px);
-}
-
-.shot-right {
-  width: 58%;
-  right: 0;
-  bottom: 14%;
-  z-index: 1;
-  transform: rotateY(-9deg) rotateZ(-4deg) translateZ(-30px);
+  grid-column: 1 / -1;
+  box-shadow: 10px 10px 0 rgba(20, 20, 20, 0.2);
 }
 
 .section.compact { margin-top: 0; }
@@ -321,7 +299,6 @@ footer {
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; gap: 24px; min-height: 0; }
   .hero h1 { font-size: 28px; }
-  .showcase { height: 460px; }
 }
 
 @media (max-width: 640px) {
@@ -331,7 +308,5 @@ footer {
   .card { box-shadow: 3px 3px 0 var(--ink); }
   .nav-actions { gap: 10px; }
   .nav-link, .nav-download { font-size: 12px; }
-  .showcase { height: 320px; }
-  .shot-main { width: 94%; left: 3%; }
-  .shot-left, .shot-right { width: 62%; }
+  .showcase { grid-template-columns: 1fr; }
 }
