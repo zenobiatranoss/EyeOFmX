@@ -90,7 +90,9 @@ jobs:
           cd dist
           find . -type f \( -name '*.deb' -o -name '*.rpm' -o \
             -name '*.pkg.tar.zst' -o -name '*.apk' -o -name '*.tar.gz' \) \
-            -printf '%P\n' | sort | xargs -r sha256sum > SHA256SUMS
+            -printf '%p\n' | sort | while read -r f; do
+              printf '%s  %s\n' "$(sha256sum "$f" | cut -d' ' -f1)" "${f##*/}"
+            done | awk '!seen[$2]++' > SHA256SUMS
           cat SHA256SUMS
 
       - name: Generate static download site
