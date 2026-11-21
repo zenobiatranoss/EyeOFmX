@@ -29,11 +29,97 @@ code {
   padding: 1px 5px;
 }
 
+html { scroll-behavior: smooth; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--paper);
+  border-bottom: 2px solid var(--line);
+}
+
+.nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.brand img { width: 28px; height: 28px; }
+
+.nav-actions { display: flex; align-items: center; gap: 16px; }
+
+.nav-link {
+  color: var(--ink);
+  font-size: 13px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--blue);
+}
+
+.nav-download {
+  display: inline-block;
+  background: var(--blue);
+  color: #ffffff;
+  border: 2px solid var(--line);
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-download:hover { background: var(--blue-dark); }
+.nav-download:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--ink); }
+
 main {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 24px 64px;
+  padding: 32px 24px 64px;
 }
+
+#downloads { scroll-margin-top: 80px; }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 32px;
+  align-items: center;
+  padding: 28px 0 40px;
+  margin-bottom: 32px;
+  border-bottom: 2px solid var(--line);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--blue);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0 0 14px;
+  font-size: 34px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.hero-text { margin: 0 0 18px; color: var(--ink-soft); max-width: 48ch; }
+.hero-link { color: var(--blue); font-size: 13px; }
+.hero-shot img { display: block; width: 100%; height: auto; }
 
 .section.compact { margin-top: 0; }
 
@@ -176,8 +262,17 @@ footer {
   font-size: 12px;
 }
 
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; gap: 24px; }
+  .hero h1 { font-size: 28px; }
+  .hero-shot img { max-width: 560px; }
+}
+
 @media (max-width: 640px) {
+  .nav { padding: 10px 16px; }
   main { padding: 28px 16px 48px; }
   .section-head { flex-direction: column; }
   .card { box-shadow: 3px 3px 0 var(--ink); }
+  .nav-actions { gap: 10px; }
+  .nav-link, .nav-download { font-size: 12px; }
 }
