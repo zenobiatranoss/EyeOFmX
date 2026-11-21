@@ -119,7 +119,9 @@ main {
 
 .hero-text { margin: 0 0 18px; color: var(--ink-soft); max-width: 48ch; }
 .hero-link { color: var(--blue); font-size: 13px; }
-.hero-shot img { display: block; width: 100%; height: auto; }
+.hero-copy.card { padding: 22px; border-left: 6px solid var(--blue); }
+.hero-shot.card { padding: 0; overflow: hidden; }
+.hero-shot img { display: block; width: 100%; height: auto; background: var(--term); }
 
 .section.compact { margin-top: 0; }
 
