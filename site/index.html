@@ -7,8 +7,8 @@
   <meta name="description" content="Single-file installers for EyeOFmX, a native GTK 3 Linux monitoring and security inspector with a comprehensive posture scan.">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="styles.css">
-  <script src="data.js"></script>
-  <script src="app.js" defer></script>
+  <script src="data.js?v=1.0.1"></script>
+  <script src="app.js?v=1.0.1" defer></script>
 </head>
 <body>
   <header class="site-header" id="top">
@@ -25,22 +25,24 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-copy card">
-        <p class="eyebrow">Native GTK 3 · Linux · For NT Protection</p>
-        <h1>Know what your system is doing.</h1>
-        <p class="hero-text">EyeOFmX is a native Linux desktop inspector. It shows active sockets, their owning processes, important system files and a short security posture report. Collectors are read-only; installing optional scanners is always a separate, confirmed action.</p>
-        <a class="hero-link" href="https://github.com/zenobiatranoss/EyeOFmX" target="_blank" rel="noopener">Source on GitHub →</a>
-      </div>
-      <div class="hero-shot card">
-        <div class="terminal-head">
-          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          <span class="terminal-title">interface preview</span>
+    <section id="home" class="view active">
+      <div class="hero">
+        <div class="hero-copy card">
+          <p class="eyebrow">Native GTK 3 · Linux · For NT Protection</p>
+          <h1>Know what your system is doing.</h1>
+          <p class="hero-text">EyeOFmX is a native Linux inspector for sockets, processes, system files and security posture. Collectors are read-only.</p>
         </div>
-        <img src="back.png" alt="Part of the EyeOFmX desktop interface showing the connections view">
+        <div class="hero-shot card">
+          <div class="terminal-head">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="terminal-title">interface preview</span>
+          </div>
+          <img src="back.png" alt="Part of the EyeOFmX desktop interface showing the connections view">
+        </div>
       </div>
     </section>
 
+    <div id="downloads-view" class="view">
     <section id="downloads" class="section compact">
       <div class="section-head">
         <h2>Downloads</h2>
@@ -56,6 +58,7 @@
       </div>
       <pre id="verify" class="terminal">Loading checksums…</pre>
     </section>
+    </div>
   </main>
 
   <footer>Created by Zenobia · For NT Protection · All Linux distributions</footer>

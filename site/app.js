@@ -5,6 +5,17 @@
   var cards = document.getElementById("cards");
   var verify = document.getElementById("verify");
   var note = document.getElementById("arch-note");
+  var home = document.getElementById("home");
+  var downloadsView = document.getElementById("downloads-view");
+
+  function setView() {
+    var name = (location.hash || "").replace("#", "") === "downloads" ? "downloads" : "home";
+    if (home) home.classList.toggle("active", name === "home");
+    if (downloadsView) downloadsView.classList.toggle("active", name === "downloads");
+    window.scrollTo(0, 0);
+  }
+  setView();
+  window.addEventListener("hashchange", setView);
 
   function esc(value) {
     return String(value).replace(/[&<>"']/g, function (c) {

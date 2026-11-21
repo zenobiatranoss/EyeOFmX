@@ -92,14 +92,16 @@ main {
 
 #downloads { scroll-margin-top: 80px; }
 
+.view { display: none; }
+.view.active { display: block; }
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   gap: 32px;
   align-items: center;
-  padding: 28px 0 40px;
-  margin-bottom: 32px;
-  border-bottom: 2px solid var(--line);
+  min-height: calc(100vh - 190px);
+  padding: 28px 0;
 }
 
 .eyebrow {
@@ -117,11 +119,17 @@ main {
   letter-spacing: -0.03em;
 }
 
-.hero-text { margin: 0 0 18px; color: var(--ink-soft); max-width: 48ch; }
-.hero-link { color: var(--blue); font-size: 13px; }
+.hero-text { margin: 0; color: var(--ink-soft); max-width: 48ch; }
 .hero-copy.card { padding: 22px; border-left: 6px solid var(--blue); }
 .hero-shot.card { padding: 0; overflow: hidden; }
-.hero-shot img { display: block; width: 100%; height: auto; background: var(--term); }
+.hero-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--term);
+  -webkit-mask-image: radial-gradient(ellipse 82% 82% at 50% 50%, #000 62%, transparent 100%);
+  mask-image: radial-gradient(ellipse 82% 82% at 50% 50%, #000 62%, transparent 100%);
+}
 
 .section.compact { margin-top: 0; }
 
