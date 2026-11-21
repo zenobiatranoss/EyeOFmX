@@ -97,11 +97,11 @@ main {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-  gap: 32px;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 40px;
   align-items: center;
-  min-height: calc(100vh - 190px);
-  padding: 28px 0;
+  min-height: calc(100vh - 130px);
+  padding: 24px 0;
 }
 
 .eyebrow {
@@ -119,16 +119,55 @@ main {
   letter-spacing: -0.03em;
 }
 
-.hero-text { margin: 0; color: var(--ink-soft); max-width: 48ch; }
-.hero-copy.card { padding: 22px; border-left: 6px solid var(--blue); }
-.hero-shot.card { padding: 0; overflow: hidden; }
-.hero-shot img {
+.hero-text { margin: 0; color: var(--ink-soft); max-width: 44ch; }
+
+.showcase {
+  position: relative;
+  height: min(68vh, 620px);
+  perspective: 1400px;
+}
+
+.shot {
+  position: absolute;
+  margin: 0;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: 12px 12px 0 rgba(20, 20, 20, 0.18);
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.shot img {
   display: block;
   width: 100%;
   height: auto;
-  background: var(--term);
-  -webkit-mask-image: radial-gradient(ellipse 82% 82% at 50% 50%, #000 62%, transparent 100%);
-  mask-image: radial-gradient(ellipse 82% 82% at 50% 50%, #000 62%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 66%, transparent 100%);
+  mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, #000 66%, transparent 100%);
+}
+
+.shot-main {
+  width: 88%;
+  top: 1%;
+  left: 6%;
+  z-index: 3;
+  transform: rotateY(-5deg) rotateZ(-1deg) translateZ(30px);
+  box-shadow: 16px 16px 0 rgba(20, 20, 20, 0.2);
+}
+
+.shot-left {
+  width: 58%;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  transform: rotateY(9deg) rotateZ(3deg) translateZ(-10px);
+}
+
+.shot-right {
+  width: 58%;
+  right: 0;
+  bottom: 4%;
+  z-index: 1;
+  transform: rotateY(-9deg) rotateZ(-4deg) translateZ(-30px);
 }
 
 .section.compact { margin-top: 0; }
@@ -273,9 +312,9 @@ footer {
 }
 
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; gap: 24px; }
+  .hero { grid-template-columns: 1fr; gap: 24px; min-height: 0; }
   .hero h1 { font-size: 28px; }
-  .hero-shot img { max-width: 560px; }
+  .showcase { height: 460px; }
 }
 
 @media (max-width: 640px) {
@@ -285,4 +324,7 @@ footer {
   .card { box-shadow: 3px 3px 0 var(--ink); }
   .nav-actions { gap: 10px; }
   .nav-link, .nav-download { font-size: 12px; }
+  .showcase { height: 320px; }
+  .shot-main { width: 94%; left: 3%; }
+  .shot-left, .shot-right { width: 62%; }
 }

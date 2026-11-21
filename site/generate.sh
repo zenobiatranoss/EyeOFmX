@@ -70,5 +70,7 @@ EOF
 cp -f "$ROOT/LICENSE" "$SITE/LICENSE.txt"
 cp -f "$ROOT/assets/icons/64x64/apps/eyeofmx.png" "$SITE/favicon.png"
 cp -f "$ROOT/back.png" "$SITE/back.png"
+cp -f "$ROOT/back2.png" "$SITE/back2.png"
+cp -f "$ROOT/back3.png" "$SITE/back3.png"
 touch "$SITE/.nojekyll"
 echo "Site data written to $SITE/data.js (${#entries[@]} download entries)"
